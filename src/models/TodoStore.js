@@ -1,5 +1,5 @@
 import { observable, action, computed } from 'mobx';
-import TodoItem from 'src/components/TodoList/TodoItem';
+import TodoItem from 'src/models/TodoItem';
 
 class TodoStore {
   @observable list = [];

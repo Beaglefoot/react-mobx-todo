@@ -1,7 +1,7 @@
 import React from 'react';
 import DevTools from 'mobx-react-devtools';
 
-import TodoStore from 'src/components/TodoList/TodoStore';
+import TodoStore from 'src/models/TodoStore';
 import TodoList from 'src/components/TodoList/TodoList';
 import { app } from './App.scss';
 
