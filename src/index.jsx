@@ -19,4 +19,10 @@ const render = Component => (
 
 render(App);
 
+if (module.hot) {
+  module.hot.accept('./components/App/App', () => {
+    render(App);
+  });
+}
+
 (new Footer).appendToDocument();
