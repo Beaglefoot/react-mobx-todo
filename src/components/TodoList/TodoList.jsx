@@ -68,7 +68,7 @@ class TodoList extends Component {
           <div className={classNames(cleanUp, 'fa', 'fa-trash-o')} onClick={removeFinishedFromList} />
         </div>
 
-        <ul className={filterClass} onClick={this.handleFiltering}>
+        <ul className={classNames(filterClass, noPadding)} onClick={this.handleFiltering}>
           {
             ['All', 'Unfinished', 'Finished'].map((value, index) => (
               <li
