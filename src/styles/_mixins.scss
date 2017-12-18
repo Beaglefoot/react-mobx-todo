@@ -1,0 +1,6 @@
+@mixin emphasize-on-hover() {
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: darken($clr_line, 15%);
+  }
+}

@@ -1,0 +1,11 @@
+@import 'src/styles/variables.scss';
+
+.app {
+  margin-top: 20vh;
+  color: $clr_main;
+  font-family: 'Nunito Sans', sans-serif;
+
+  h1 {
+    text-align: center;
+  }
+}

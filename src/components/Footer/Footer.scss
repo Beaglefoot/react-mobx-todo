@@ -1,0 +1,26 @@
+@import 'src/styles/variables.scss';
+
+$clr_footer_link: lighten($clr_main, 30%);
+$clr_footer_link_hover: #fff;
+$clr_footer_text: lighten(gray, 10%);
+
+.footer {
+  font-family: 'VT323';
+  font-size: 14px;
+  color: rgba($clr_footer_text, 0.8);
+  text-align: center;
+  padding: 0.2em;
+  background: rgba(#000, 0.1);
+}
+
+.link {
+  text-decoration: none;
+  color: rgba($clr_footer_link, 0.8);
+  outline: none;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $clr_footer_link_hover;
+    text-shadow: 0 0 2px $clr_footer_link;
+  }
+}
