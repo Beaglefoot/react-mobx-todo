@@ -7,6 +7,8 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
+    './debug/debugLog.js',
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
@@ -80,10 +82,13 @@ module.exports = {
   ],
 
   devServer: {
+    contentBase: '/',
+    host: '0.0.0.0',
     historyApiFallback: true,
     inline: true,
     hot: true,
     open: true,
-    openPage: ''
+    openPage: '',
+    port: 7000
   }
 };

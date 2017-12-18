@@ -3,28 +3,15 @@
     ["env", {
       "targets": {
         "browsers": [
-          "last 2 Chrome versions",
-          "last 2 Firefox versions",
-          "last 2 Edge versions"
+          "ie 8"
         ]
       },
       "modules": false,
-      "loose": true
+      "loose": true,
+      "useBuiltIns": "usage"
     }],
     "react",
     "stage-1"
   ],
-  "plugins": ["transform-decorators-legacy", "transform-object-rest-spread", "syntax-dynamic-import"],
-  "env": {
-    "test": {
-      "presets": [
-        ["env", {
-          "targets": {
-            "node": "current"
-          }
-        }],
-      "react"
-      ]
-    }
-  }
+  "plugins": ["transform-decorators-legacy", "transform-object-rest-spread", "syntax-dynamic-import"]
 }
