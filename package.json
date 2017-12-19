@@ -22,6 +22,8 @@
     "babel-preset-stage-1": "^6.24.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.4",
+    "dumper": "^1.0.12",
+    "es3ify-loader": "^0.2.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
     "mobx-react-devtools": "^4.2.15",

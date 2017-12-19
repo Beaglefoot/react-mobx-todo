@@ -1,0 +1,19 @@
+.App__app--2hZZZ {
+  margin-top: 20vh;
+  color: #444;
+  font-family: 'Nunito Sans', sans-serif; }
+  .App__app--2hZZZ h1 {
+    text-align: center; }
+html, body {
+  height: 100%; }
+
+body {
+  background: #fff;
+  background: repeating-linear-gradient(135deg, #f7f7f7 0, #f7f7f7 5%, #fff 0, #fff 50%);
+  background-size: 10px 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: column; }
+
+#app {
+  flex-grow: 1; }

@@ -3,15 +3,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const MinifyPlugin = require("babel-minify-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const MinifyPlugin = require("babel-minify-webpack-plugin");
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 
 const devModuleConfig = require('./webpack.config.js');
 
 
 module.exports = Object.assign({}, devModuleConfig, {
-  entry: './src/index.jsx',
+  // entry: './src/index.jsx',
 
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -33,7 +33,7 @@ module.exports = Object.assign({}, devModuleConfig, {
       }
     }),
     new ExtractTextPlugin('style.css'),
-    new MinifyPlugin(),
-    new BundleAnalyzerPlugin()
+    // new MinifyPlugin(),
+    // new BundleAnalyzerPlugin()
   ]
 });

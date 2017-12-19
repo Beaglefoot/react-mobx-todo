@@ -5,13 +5,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
+const readFileSync = require('fs').readFileSync;
+let babelrc = JSON.parse(readFileSync('.babelrc', 'utf8'));
+const envIndex = babelrc.presets.findIndex(preset => (
+  Array.isArray(preset) && preset.includes('env')
+));
+babelrc.presets[envIndex][1].modules = 'commonjs';
+
+
 module.exports = {
   entry: [
     'babel-polyfill',
+    './polyfills',
     './debug/debugLog.js',
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
+    './debug/restartShortcut',
     './src/index.jsx'
   ],
 
@@ -28,6 +35,23 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.js$/,
+        include: /node_modules/,
+        exclude: /node_modules\/mobx/,
+        loader: 'es3ify-loader'
+      },
+      {
+        test: /\.js$/,
+        include: /node_modules\/mobx/,
+        use: [
+          'es3ify-loader',
+          {
+            loader: 'babel-loader',
+            options: babelrc
+          }
+        ]
       },
       {
         test: /\.css$/,

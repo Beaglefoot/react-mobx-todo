@@ -5,6 +5,7 @@ html, body {
 }
 
 body {
+  background: #fff;
   background: repeating-linear-gradient(135deg, $clr_bg_second 0, $clr_bg_second 5%, $clr_bg_first 0, $clr_bg_first 50%);
   background-size: 10px 10px;
   margin: 0;

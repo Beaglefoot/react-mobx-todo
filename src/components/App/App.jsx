@@ -1,5 +1,4 @@
 import React from 'react';
-import DevTools from 'mobx-react-devtools';
 
 import TodoStore from 'src/models/TodoStore';
 import TodoList from 'src/components/TodoList/TodoList';
@@ -13,7 +12,6 @@ const App = () => (
   <div className={app}>
     <h1>Todo List</h1>
     <TodoList store={store} />
-    <DevTools />
   </div>
 );
 

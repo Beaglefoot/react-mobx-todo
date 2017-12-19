@@ -3,7 +3,7 @@
     ["env", {
       "targets": {
         "browsers": [
-          "ie 8"
+          "safari 4"
         ]
       },
       "modules": false,
