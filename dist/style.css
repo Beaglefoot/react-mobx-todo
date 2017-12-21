@@ -1,0 +1,105 @@
+.TodoList__todo-list--2CU9y {
+  max-width: 20em;
+  margin: 0 auto;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  background: #fff;
+  border: 1px solid #919191;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); }
+  .TodoList__todo-list--2CU9y > * {
+    width: 80%; }
+
+.TodoList__no-padding--2eHLv {
+  padding: 0; }
+
+.TodoList__todo-item--pIsqx {
+  display: flex;
+  justify-content: space-between; }
+
+.TodoList__todo-text--2tt-9 {
+  cursor: pointer; }
+  .TodoList__todo-text--2tt-9:hover {
+    text-decoration: underline;
+    text-decoration-color: #6a6a6a; }
+
+.TodoList__add-item--26iBc {
+  margin-top: 1em;
+  border: 1px solid #919191;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  transition: border-color 0.2s;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: inherit; }
+  .TodoList__add-item--26iBc:focus {
+    outline: none;
+    border-color: #444; }
+
+.TodoList__cross--1NCvU {
+  cursor: pointer;
+  color: #777777; }
+  .TodoList__cross--1NCvU:hover {
+    text-decoration: underline;
+    text-decoration-color: #6a6a6a; }
+
+.TodoList__after-row--ayYIX {
+  display: flex;
+  justify-content: space-between; }
+
+.TodoList__clean-up--1Unbu {
+  cursor: pointer; }
+  .TodoList__clean-up--1Unbu:hover {
+    text-decoration: underline;
+    text-decoration-color: #6a6a6a; }
+
+.TodoList__filter--3c-Y3 {
+  display: flex;
+  justify-content: space-between; }
+  .TodoList__filter--3c-Y3 li {
+    flex-grow: 1;
+    display: inline-block;
+    padding: 0 1em;
+    text-align: center;
+    cursor: pointer;
+    color: lightgray; }
+    .TodoList__filter--3c-Y3 li:hover {
+      text-decoration: underline;
+      text-decoration-color: #6a6a6a; }
+.App__app--29i3V {
+  margin-top: 20vh;
+  color: #444;
+  font-family: 'Nunito Sans', sans-serif; }
+  .App__app--29i3V h1 {
+    text-align: center; }
+.Footer__footer--2PpiC {
+  font-family: 'VT323';
+  font-size: 14px;
+  color: rgba(154, 154, 154, 0.8);
+  text-align: center;
+  padding: 0.2em;
+  background: rgba(0, 0, 0, 0.1); }
+
+.Footer__link--wimfP {
+  text-decoration: none;
+  color: rgba(145, 145, 145, 0.8);
+  outline: none;
+  transition: all 0.3s; }
+  .Footer__link--wimfP:hover {
+    color: #fff;
+    text-shadow: 0 0 2px #919191; }
+html, body {
+  height: 100%; }
+
+body {
+  background: repeating-linear-gradient(135deg, #f7f7f7 0, #f7f7f7 5%, #fff 0, #fff 50%);
+  background-size: 10px 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: column; }
+
+#app {
+  flex-grow: 1; }
