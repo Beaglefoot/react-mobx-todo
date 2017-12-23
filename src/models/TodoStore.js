@@ -7,8 +7,8 @@ class TodoStore {
 
   constructor() {
     this.list = [
-      new TodoItem('cook something'),
-      new TodoItem('replace bulb')
+      new TodoItem({ value: 'cook something' }),
+      new TodoItem({ value: 'replace bulb' })
     ];
 
     this.filter = 'all';
@@ -16,8 +16,12 @@ class TodoStore {
     this.removeFinishedFromList = this.removeFinishedFromList.bind(this);
   }
 
+  @action replaceList(list) {
+    this.list = list.map(item => new TodoItem(item));
+  }
+
   @action addToList(value) {
-    this.list.unshift(new TodoItem(value));
+    this.list.unshift(new TodoItem({ value }));
   }
 
   @action changeFilter(value) {
@@ -34,12 +38,12 @@ class TodoStore {
 
   @computed get filteredList() {
     switch(this.filter) {
-    case 'finished':
-      return this.list.filter(item => item.done);
-    case 'unfinished':
-      return this.list.filter(item => !item.done);
-    default:
-      return this.list;
+      case 'finished':
+        return this.list.filter(item => item.done);
+      case 'unfinished':
+        return this.list.filter(item => !item.done);
+      default:
+        return this.list;
     }
   }
 }
