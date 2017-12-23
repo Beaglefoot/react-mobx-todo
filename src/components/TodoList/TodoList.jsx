@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import classNames from 'classnames';
+
+import TodoText from 'src/components/TodoList/TodoText';
+
 import {
   todoList,
   todoItem,
@@ -46,15 +49,9 @@ class TodoList extends Component {
         <input className={addItem} type="text" onKeyPress={this.handleChange} placeholder="Add an item" />
         <ul className={noPadding}>
           {
-            filteredList.map(({ value, id, done, toggleDone }, index) => (
-              <li key={id} className={todoItem}>
-                <div
-                  className={todoText}
-                  onClick={toggleDone}
-                  style={done ? { textDecoration: 'line-through' } : {}}
-                >
-                  {value}
-                </div>
+            filteredList.map((item, index) => (
+              <li key={item.id} className={todoItem}>
+                <TodoText {...item} />
                 <div className={cross} onClick={() => removeFromList(index)}>
                   &#10006;
                 </div>
