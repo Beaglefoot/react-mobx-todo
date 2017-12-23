@@ -5,10 +5,10 @@ import { todoItem, todoText, edit } from './TodoText.scss';
 
 @observer
 class TodoText extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
-    this.state = { text: props.value, isEditing: false };
+    this.state = { isEditing: false };
 
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleEditing = this.handleEditing.bind(this);
@@ -20,7 +20,6 @@ class TodoText extends React.Component {
   }
 
   handleEditing({ target: { value } }) {
-    this.setState({ text: value });
     this.props.changeValue(value);
   }
 
@@ -29,21 +28,20 @@ class TodoText extends React.Component {
   }
 
   render() {
-    const { toggleDone, done } = this.props;
-    const { text } = this.state;
+    const { toggleDone, done, value } = this.props;
 
     return (
       <div className={todoItem}>
         {
           this.state.isEditing ? (
-            <input value={text} onChange={this.handleEditing} onKeyDown={this.handleEditFinish} />
+            <input value={value} onChange={this.handleEditing} onKeyDown={this.handleEditFinish} />
           ) : (
             <div
               className={todoText}
               onClick={() => toggleDone()}
               style={done ? { textDecoration: 'line-through' } : {}}
             >
-              {text}
+              {value}
             </div>
           )
         }
