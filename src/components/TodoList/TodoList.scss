@@ -28,11 +28,6 @@
   justify-content: space-between;
 }
 
-.todo-text {
-  cursor: pointer;
-  @include emphasize-on-hover();
-}
-
 .add-item {
   margin-top: 1em;
   border: 1px solid $clr_line;
@@ -51,6 +46,8 @@
 }
 
 .cross {
+  display: inline-block;
+  margin: 0 0.2em;
   cursor: pointer;
   color: lighten($clr_main, 20%);
   @include emphasize-on-hover();

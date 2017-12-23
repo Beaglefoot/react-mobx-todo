@@ -1,0 +1,17 @@
+@import 'src/styles/mixins.scss';
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.todo-text {
+  cursor: pointer;
+  @include emphasize-on-hover();
+}
+
+.edit {
+  composes: cross from './TodoList.scss';
+  text-align: right;
+}

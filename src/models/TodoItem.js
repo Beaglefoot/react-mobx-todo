@@ -9,10 +9,15 @@ class TodoItem {
     Object.assign(this, { value, id, done });
 
     this.toggleDone = this.toggleDone.bind(this);
+    this.changeValue = this.changeValue.bind(this);
   }
 
   @action toggleDone() {
     this.done = !this.done;
+  }
+
+  @action changeValue(value) {
+    this.value = value;
   }
 }
 
