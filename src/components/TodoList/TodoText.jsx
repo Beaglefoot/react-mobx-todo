@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import { todoItem, todoText, edit } from './TodoText.scss';
+import { todoItem, todoText, edit, todoEdit } from './TodoText.scss';
 
 @observer
 class TodoText extends React.Component {
@@ -34,7 +34,7 @@ class TodoText extends React.Component {
       <div className={todoItem}>
         {
           this.state.isEditing ? (
-            <input value={value} onChange={this.handleEditing} onKeyDown={this.handleEditFinish} />
+            <input className={todoEdit} value={value} onChange={this.handleEditing} onKeyDown={this.handleEditFinish} />
           ) : (
             <div
               className={todoText}

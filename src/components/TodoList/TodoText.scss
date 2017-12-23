@@ -15,3 +15,8 @@
   composes: cross from './TodoList.scss';
   text-align: right;
 }
+
+.todo-edit {
+  composes: add-item from './TodoList.scss';
+  margin: 0;
+}
