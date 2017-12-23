@@ -5,10 +5,8 @@ class TodoItem {
   @observable value;
   @observable done;
 
-  constructor(value) {
-    this.value = value;
-    this.id = cuid();
-    this.done = false;
+  constructor({ value = '', id = cuid(), done = false }) {
+    Object.assign(this, { value, id, done });
 
     this.toggleDone = this.toggleDone.bind(this);
   }
