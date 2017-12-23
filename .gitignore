@@ -3,3 +3,4 @@ npm-debug.log
 dist
 *.swp
 stats.json
+.idea
