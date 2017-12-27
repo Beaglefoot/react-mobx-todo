@@ -13,6 +13,7 @@ class TodoText extends React.Component {
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleEditing = this.handleEditing.bind(this);
     this.handleEditFinish = this.handleEditFinish.bind(this);
+    this.handleDoneClick = this.handleDoneClick.bind(this);
   }
 
   handleEditClick() {
@@ -27,8 +28,14 @@ class TodoText extends React.Component {
     if (e.which === 13 || e.which === 27) this.setState({ isEditing: false });
   }
 
+  handleDoneClick() {
+    console.time('toggle Done');
+    this.props.toggleDone();
+    console.timeEnd('toggle Done');
+  }
+
   render() {
-    const { toggleDone, done, value } = this.props;
+    const { done, value } = this.props;
 
     return (
       <div className={todoItem}>
@@ -38,7 +45,7 @@ class TodoText extends React.Component {
           ) : (
             <div
               className={todoText}
-              onClick={() => toggleDone()}
+              onClick={this.handleDoneClick}
               style={done ? { textDecoration: 'line-through' } : {}}
             >
               {value}
