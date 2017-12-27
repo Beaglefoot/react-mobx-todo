@@ -1,5 +1,6 @@
 import React from 'react';
 import DevTools from 'mobx-react-devtools';
+import cuid from 'cuid';
 // import { reaction } from 'mobx';
 
 import TodoStore from 'src/models/TodoStoreMST';
@@ -7,12 +8,12 @@ import TodoItem from 'src/models/TodoItemMST';
 import TodoList from 'src/components/TodoList/TodoList';
 import { app } from './App.scss';
 
+console.time('mst');
+const items = new Array(5000).fill().map((_, i) => TodoItem.create({ value: `no: ${i}` }));
 const store = TodoStore.create({
-  list: [
-    TodoItem.create({ value: 'test performance' }),
-    TodoItem.create({ value: 'write report' })
-  ]
+  list: items
 });
+console.timeEnd('mst');
 
 // const savedStoreState = JSON.parse(localStorage.getItem('TodoStore'));
 // if (savedStoreState) store.replaceList(savedStoreState);
