@@ -1,7 +1,10 @@
 @import 'src/styles/variables.scss';
 
 .app {
-  margin-top: 20vh;
+  display: flex;
+  justify-content: space-around;
+  max-width: 900px;
+  margin: 5vh auto;
   color: $clr_main;
   font-family: 'Nunito Sans', sans-serif;
 
