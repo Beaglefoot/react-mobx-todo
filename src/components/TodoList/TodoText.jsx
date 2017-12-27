@@ -21,7 +21,9 @@ class TodoText extends React.Component {
   }
 
   handleEditing({ target: { value } }) {
+    console.time('change value');
     this.props.changeValue(value);
+    console.timeEnd('change value');
   }
 
   handleEditFinish(e) {
