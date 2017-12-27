@@ -50,12 +50,12 @@ class TodoList extends Component {
         <ul className={noPadding}>
           {
             filteredList.map((item, index) => (
-              <li key={item.id} className={todoItem}>
-                <TodoText {...item} />
-                <div className={cross} onClick={() => removeFromList(index)}>
-                  &#10006;
-                </div>
-              </li>
+                <li key={item.id} className={todoItem}>
+                  <TodoText {...item} toggleDone={item.toggleDone} changeValue={item.changeValue} />
+                  <div className={cross} onClick={() => removeFromList(index)}>
+                    &#10006;
+                  </div>
+                </li>
             ))
           }
         </ul>
