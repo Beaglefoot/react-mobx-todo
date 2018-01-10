@@ -39,17 +39,19 @@ module.exports = {
       {
         test: /\.js$/,
         include: /node_modules/,
-        exclude: /node_modules\/mobx/,
-        loader: 'es3ify-loader'
-      },
-      {
-        test: /\.js$/,
-        include: /node_modules\/mobx/,
-        use: [
-          'es3ify-loader',
+        oneOf: [
           {
-            loader: 'babel-loader',
-            options: babelrc
+            test: /node_modules\/mobx/,
+            use: [
+              'es3ify-loader',
+              {
+                loader: 'babel-loader',
+                options: babelrc
+              }
+            ]
+          },
+          {
+            loader: 'es3ify-loader'
           }
         ]
       },
