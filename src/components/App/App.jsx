@@ -5,12 +5,10 @@ import TodoItem from 'src/models/TodoItemMST';
 import TodoList from 'src/components/TodoList/TodoList';
 import { app } from './App.scss';
 
-console.time('mst');
 const items = new Array(50).fill().map((_, i) => TodoItem.create({ value: `no: ${i}` }));
 const store = TodoStore.create({
   list: items
 });
-console.timeEnd('mst');
 
 // const savedStoreState = JSON.parse(localStorage.getItem('TodoStore'));
 // if (savedStoreState) store.replaceList(savedStoreState);
@@ -20,6 +18,7 @@ console.timeEnd('mst');
 //     data => localStorage.setItem('TodoStore', data)
 // );
 
+console.log(new Date().toTimeString().split(' ')[0]);
 
 const App = () => (
   <div className={app}>
