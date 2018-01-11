@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+// import { observer } from 'mobx-react';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 import TodoText from 'src/components/TodoList/TodoText';
@@ -16,7 +17,17 @@ import {
   cleanUp
 } from './TodoList.scss';
 
-@observer
+import {
+  addToList,
+  changeFilter,
+  removeFromList,
+  removeFinishedFromList,
+}  from 'src/redux/actions';
+
+import { getFilteredList, enhanceListItems } from "src/redux/helpers";
+
+
+// @observer
 class TodoList extends Component {
   constructor() {
     super();
@@ -84,4 +95,22 @@ class TodoList extends Component {
   }
 }
 
-export default TodoList;
+// export default TodoList;
+
+const mapStateToProps = state => ({
+  store: {
+    ...state,
+    filteredList: getFilteredList({ ...state, list: enhanceListItems(state.list) })
+  }
+});
+
+const mapDispatchToProps = {
+  addToList,
+  changeFilter,
+  removeFromList,
+  removeFinishedFromList,
+};
+
+const mergeProps = ({ store }, dispatchProps) => ({ store: { ...store, ...dispatchProps }});
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(TodoList);

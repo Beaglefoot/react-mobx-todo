@@ -1,9 +1,9 @@
 import React from 'react';
-import { observer } from 'mobx-react';
+// import { observer } from 'mobx-react';
 
 import { todoItem, todoText, edit, todoEdit } from './TodoText.scss';
 
-@observer
+// @observer
 class TodoText extends React.Component {
   constructor() {
     super();
