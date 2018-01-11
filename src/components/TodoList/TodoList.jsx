@@ -26,10 +26,12 @@ class TodoList extends Component {
 
   handleChange(e) {
     // on Enter press
-    if (e.charCode === 13) {
-      this.props.store.addToList(e.target.value);
-      e.target.value = '';
-    }
+      if (e.charCode === 13) {
+          const startTime = (new Date()).getTime();
+          this.props.store.addToList(e.target.value);
+          console.log((new Date()).getTime() - startTime);
+          e.target.value = '';
+      }
   }
 
   handleFiltering(e) {
