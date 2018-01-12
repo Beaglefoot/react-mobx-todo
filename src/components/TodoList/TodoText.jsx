@@ -1,9 +1,7 @@
 import React from 'react';
-// import { observer } from 'mobx-react';
 
 import { todoItem, todoText, edit, todoEdit } from './TodoText.scss';
 
-// @observer
 class TodoText extends React.Component {
   constructor() {
     super();
@@ -13,6 +11,7 @@ class TodoText extends React.Component {
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleEditing = this.handleEditing.bind(this);
     this.handleEditFinish = this.handleEditFinish.bind(this);
+    this.handleDoneToggling = this.handleDoneToggling.bind(this);
   }
 
   handleEditClick() {
@@ -20,15 +19,19 @@ class TodoText extends React.Component {
   }
 
   handleEditing({ target: { value } }) {
-    this.props.changeValue(value);
+    this.props.changeValue(this.props.index, value);
   }
 
   handleEditFinish(e) {
     if (e.which === 13 || e.which === 27) this.setState({ isEditing: false });
   }
 
+  handleDoneToggling() {
+    this.props.toggleDone(this.props.index);
+  }
+
   render() {
-    const { toggleDone, done, value } = this.props;
+    const { done, value } = this.props;
 
     return (
       <div className={todoItem}>
@@ -38,7 +41,7 @@ class TodoText extends React.Component {
           ) : (
             <div
               className={todoText}
-              onClick={() => toggleDone()}
+              onClick={this.handleDoneToggling}
               style={done ? { textDecoration: 'line-through' } : {}}
             >
               {value}

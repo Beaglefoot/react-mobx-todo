@@ -1,3 +1,5 @@
+import * as R from 'ramda';
+
 import initialState from './initialState';
 
 import {
@@ -14,29 +16,18 @@ import { createTodoItem } from './helpers';
 const reducer = (state = initialState, { type, payload }) => {
   switch(type) {
     case ADD_TO_LIST:
-      return { ...state, list: [createTodoItem(payload), ...state.list] };
+      // console.log(`reducer: ${(new Date()).getTime() - window.startTime}ms`);
+      return R.evolve({ list: R.prepend(createTodoItem(payload)) }, state);
     case CHANGE_FILTER:
-      return { ...state, filter: payload };
+      return R.assoc('filter', payload, state);
     case REMOVE_FROM_LIST:
-      return { ...state, list: [...state.list.slice(0, payload), ...state.list.slice(payload + 1)] };
+      return R.evolve({ list: R.remove(payload, 1) }, state);
     case REMOVE_FINISHED_FROM_LIST:
-      return { ...state, list: state.list.filter(item => !item.done) };
+      return R.evolve({ list: R.filter(item => !item.done) });
     case TOGGLE_DONE:
-      console.log('reducer toggleDone');
-      return { ...state, list: [
-        ...state.list.slice(0, payload),
-        { ...state.list[payload], done: !state.list[payload].done },
-        ...state.list.slice(payload + 1)
-      ]};
+      return R.over(R.lensPath(['list', payload, 'done']), R.not, state);
     case CHANGE_VALUE:
-      return {
-        ...state,
-        list: [
-          ...state.list.slice(0, payload.index),
-          { ...state.list[payload.index], value: payload.value },
-          ...state.list.slice(payload.index + 1)
-        ]
-      };
+      return R.assocPath(['list', payload.index, 'value'], payload.value, state);
     default:
       return state;
   }

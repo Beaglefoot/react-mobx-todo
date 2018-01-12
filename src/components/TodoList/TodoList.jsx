@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-// import { observer } from 'mobx-react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+
+import * as R from 'ramda';
 
 import TodoText from 'src/components/TodoList/TodoText';
 
@@ -22,12 +23,12 @@ import {
   changeFilter,
   removeFromList,
   removeFinishedFromList,
-}  from 'src/redux/actions';
+  toggleDone,
+  changeValue
+} from 'src/redux/actions';
 
-import { getFilteredList, enhanceListItems } from "src/redux/helpers";
+import { getFilteredList } from 'src/redux/selectors';
 
-
-// @observer
 class TodoList extends Component {
   constructor() {
     super();
@@ -37,16 +38,16 @@ class TodoList extends Component {
 
   handleChange(e) {
     // on Enter press
-      if (e.charCode === 13) {
-          const startTime = (new Date()).getTime();
-          this.props.store.addToList(e.target.value);
-          console.log((new Date()).getTime() - startTime);
-          e.target.value = '';
-      }
+    if (e.charCode === 13) {
+      window.startTime = (new Date()).getTime();
+      this.props.addToList(e.target.value);
+      console.log(`finish: ${(new Date()).getTime() - window.startTime}ms`);
+      e.target.value = '';
+    }
   }
 
   handleFiltering(e) {
-    this.props.store.changeFilter(e.target.textContent.toLowerCase());
+    this.props.changeFilter(e.target.textContent.toLowerCase());
   }
 
   render() {
@@ -54,8 +55,10 @@ class TodoList extends Component {
       filteredList,
       filter,
       removeFromList,
-      removeFinishedFromList
-    } = this.props.store;
+      removeFinishedFromList,
+      toggleDone,
+      changeValue
+    } = this.props;
 
     return (
       <div className={todoList}>
@@ -63,12 +66,12 @@ class TodoList extends Component {
         <ul className={noPadding}>
           {
             filteredList.map((item, index) => (
-                <li key={item.id} className={todoItem}>
-                  <TodoText {...item} toggleDone={item.toggleDone} changeValue={item.changeValue} />
-                  <div className={cross} onClick={() => removeFromList(index)}>
-                    &#10006;
-                  </div>
-                </li>
+              <li key={item.id} className={todoItem}>
+                <TodoText {...item} toggleDone={toggleDone} changeValue={changeValue} index={index} />
+                <div className={cross} onClick={() => removeFromList(index)}>
+                  &#10006;
+                </div>
+              </li>
             ))
           }
         </ul>
@@ -95,22 +98,16 @@ class TodoList extends Component {
   }
 }
 
-// export default TodoList;
-
-const mapStateToProps = state => ({
-  store: {
-    ...state,
-    filteredList: getFilteredList({ ...state, list: enhanceListItems(state.list) })
-  }
-});
+const mapStateToProps = state => R.assoc('filteredList', getFilteredList(state), state);
+// const mapStateToProps = state => ({ ...state, filteredList: state.list });
 
 const mapDispatchToProps = {
   addToList,
   changeFilter,
   removeFromList,
   removeFinishedFromList,
+  toggleDone,
+  changeValue
 };
 
-const mergeProps = ({ store }, dispatchProps) => ({ store: { ...store, ...dispatchProps }});
-
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

@@ -41,7 +41,7 @@ module.exports = {
         include: /node_modules/,
         oneOf: [
           {
-            test: /node_modules\/.*(mobx|redux|lodash-es)/,
+            test: /node_modules\/.*(mobx|redux|lodash-es|ramda)/,
             use: [
               'es3ify-loader',
               {
