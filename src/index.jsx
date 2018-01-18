@@ -1,5 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
@@ -9,20 +7,47 @@ import App from './components/App/App';
 /* eslint import/extensions: off */
 import 'src/styles/global.scss';
 
+import {
+  todoList,
+  todoItem,
+  todoText,
+  cross,
+  afterRow,
+  filter as filterClass,
+  addItem,
+  noPadding,
+  cleanUp
+} from 'src/components/TodoList/TodoList.scss';
+
 const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-export const dispatch = store.dispatch;
+window.store = store;
 
-const render = Component => (
-  ReactDOM.render(
-    <Provider store={store}>
-      <Component />
-    </Provider>,
-    document.getElementById('app')
-  )
-);
+const dispatch = store.dispatch;
 
-render(App);
+const app = document.getElementById('app');
+const header = document.createElement('h1');
+const todoApp = document.createElement('div');
+
+header.appendChild(document.createTextNode('Native Todo List'));
+
+app.appendChild(header);
+app.appendChild(todoApp);
+
+const formList = () => `
+  <ul>
+    ${store.getState().list.reduce((html, item) => html.concat(`<li>${item.value}</li>`), '')}
+  </ul>
+`;
+
+todoApp.innerHTML = formList();
+
+setTimeout(() => {
+  window.startTime = (new Date()).getTime();
+  dispatch({type: 'ADD_TO_LIST', payload: {value: 'hello'}});
+  todoApp.innerHTML = formList();
+  console.log(`render: ${(new Date()).getTime() - window.startTime}ms`);
+}, 3000);
