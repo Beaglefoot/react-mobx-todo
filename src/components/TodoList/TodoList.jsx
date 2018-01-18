@@ -24,14 +24,20 @@ class TodoList extends Component {
     this.handleFiltering = this.handleFiltering.bind(this);
   }
 
+  componentWillUpdate() {
+    window.startTime = (new Date()).getTime();
+  }
+
+  componentDidUpdate() {
+    console.log(`render: ${(new Date()).getTime() - window.startTime}ms`);
+  }
+
   handleChange(e) {
     // on Enter press
-      if (e.charCode === 13) {
-          const startTime = (new Date()).getTime();
-          this.props.store.addToList(e.target.value);
-          console.log((new Date()).getTime() - startTime);
-          e.target.value = '';
-      }
+    if (e.charCode === 13) {
+      this.props.store.addToList(e.target.value);
+      e.target.value = '';
+    }
   }
 
   handleFiltering(e) {
@@ -52,12 +58,12 @@ class TodoList extends Component {
         <ul className={noPadding}>
           {
             filteredList.map((item, index) => (
-                <li key={item.id} className={todoItem}>
-                  <TodoText {...item} toggleDone={item.toggleDone} changeValue={item.changeValue} />
-                  <div className={cross} onClick={() => removeFromList(index)}>
-                    &#10006;
-                  </div>
-                </li>
+              <li key={item.id} className={todoItem}>
+                <TodoText {...item} toggleDone={item.toggleDone} changeValue={item.changeValue} />
+                <div className={cross} onClick={() => removeFromList(index)}>
+                  &#10006;
+                </div>
+              </li>
             ))
           }
         </ul>
