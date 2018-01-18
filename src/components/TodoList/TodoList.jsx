@@ -36,12 +36,18 @@ class TodoList extends Component {
     this.handleFiltering = this.handleFiltering.bind(this);
   }
 
+  componentWillUpdate() {
+    window.startTime = (new Date()).getTime();
+  }
+
+  componentDidUpdate() {
+    console.log(`render: ${(new Date()).getTime() - window.startTime}ms`);
+  }
+
   handleChange(e) {
     // on Enter press
     if (e.charCode === 13) {
-      window.startTime = (new Date()).getTime();
       this.props.addToList(e.target.value);
-      console.log(`finish: ${(new Date()).getTime() - window.startTime}ms`);
       e.target.value = '';
     }
   }
