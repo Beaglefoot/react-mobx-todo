@@ -17,8 +17,9 @@ import {
 } from './TodoList.scss';
 
 import renderLogger from 'src/hocs/renderLogger';
+import renderPerformance from 'src/hocs/renderPerformance';
 
-@renderLogger @observer
+@renderLogger @renderPerformance @observer
 class TodoList extends Component {
   constructor() {
     super();
