@@ -16,7 +16,9 @@ import {
   cleanUp
 } from './TodoList.scss';
 
-@observer
+import renderLogger from 'src/hocs/renderLogger';
+
+@renderLogger @observer
 class TodoList extends Component {
   constructor() {
     super();
