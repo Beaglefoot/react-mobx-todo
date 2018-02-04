@@ -29,29 +29,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader']
       },
+
       {
         test: /\.s[ac]ss$/,
-        // use: ExtractTextPlugin.extract({
-        //   fallback: 'style-loader',
-        //   use: [
-        //     {
-        //       loader: 'css-loader',
-        //       options: {
-        //         modules: true,
-        //         sourceMap: true,
-        //         importLoaders: 1,
-        //         localIdentName: '[name]__[local]--[hash:base64:5]',
-        //         camelCase: true
-        //       }
-        //     },
-        //     'sass-loader'
-        //   ]
-        // })
         use: [
           'style-loader',
           {
@@ -67,6 +49,7 @@ module.exports = {
           'sass-loader'
         ]
       },
+
       {
         test: /_worker\.js$/,
         loader: 'worker-loader'
