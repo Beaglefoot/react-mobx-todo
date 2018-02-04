@@ -20,12 +20,6 @@
   display: flex;
   justify-content: space-between; }
 
-.TodoList__todo-text--2tt-9 {
-  cursor: pointer; }
-  .TodoList__todo-text--2tt-9:hover {
-    text-decoration: underline;
-    text-decoration-color: #6a6a6a; }
-
 .TodoList__add-item--26iBc {
   margin-top: 1em;
   border: 1px solid #919191;
@@ -40,6 +34,8 @@
     border-color: #444; }
 
 .TodoList__cross--1NCvU {
+  display: inline-block;
+  margin: 0 0.2em;
   cursor: pointer;
   color: #777777; }
   .TodoList__cross--1NCvU:hover {
@@ -69,6 +65,22 @@
     .TodoList__filter--3c-Y3 li:hover {
       text-decoration: underline;
       text-decoration-color: #6a6a6a; }
+.TodoText__todo-item--3H5f0 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; }
+
+.TodoText__todo-text---L0Mh {
+  cursor: pointer; }
+  .TodoText__todo-text---L0Mh:hover {
+    text-decoration: underline;
+    text-decoration-color: #6a6a6a; }
+
+.TodoText__edit--Ybatq {
+  text-align: right; }
+
+.TodoText__todo-edit--3Jt5Z {
+  margin: 0; }
 .App__app--29i3V {
   margin-top: 20vh;
   color: #444;
