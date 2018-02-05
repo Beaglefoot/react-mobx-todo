@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 
 import TodoList from 'src/components/TodoList/TodoList';
 import { app } from './App.scss';
@@ -23,9 +24,13 @@ import TodoItem from 'src/models/TodoItem';
 const items = new Array(1500)
   .fill()
   .map((_, i) => new TodoItem({ value: `no: ${i}` }));
-const store = new TodoStore(items);
 
-const App = () => (
+const store = new TodoStore(items);
+window.store = store;
+
+setInterval(() => store.list[1].changeValue(Math.random().toString()), 12000);
+
+const App = observer(() => (
   <div>
     <div className={app}>
       {/*<div>*/}
@@ -38,6 +43,6 @@ const App = () => (
       </div>
     </div>
   </div>
-);
+));
 
 export default App;

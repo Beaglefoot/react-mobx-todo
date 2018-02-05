@@ -25,11 +25,11 @@ class TodoList extends Component {
   }
 
   componentWillUpdate() {
-    window.startTime = (new Date()).getTime();
+    window.startTime = new Date().getTime();
   }
 
   componentDidUpdate() {
-    console.log(`render: ${(new Date()).getTime() - window.startTime}ms`);
+    console.log(`render: ${new Date().getTime() - window.startTime}ms`);
   }
 
   handleChange(e) {
@@ -54,36 +54,48 @@ class TodoList extends Component {
 
     return (
       <div className={todoList}>
-        <input className={addItem} type="text" onKeyPress={this.handleChange} placeholder="Add an item" />
+        <input
+          className={addItem}
+          type="text"
+          onKeyPress={this.handleChange}
+          placeholder="Add an item"
+        />
         <ul className={noPadding}>
-          {
-            filteredList.map((item, index) => (
-              <li key={item.id} className={todoItem}>
-                <TodoText {...item} toggleDone={item.toggleDone} changeValue={item.changeValue} />
-                <div className={cross} onClick={() => removeFromList(index)}>
-                  &#10006;
-                </div>
-              </li>
-            ))
-          }
+          {filteredList.map((item, index) => (
+            <li key={item.id} className={todoItem}>
+              {item.value}
+              {/* <TodoText
+                {...item}
+                toggleDone={item.toggleDone}
+                changeValue={item.changeValue}
+              />
+              <div className={cross} onClick={() => removeFromList(index)}>
+                &#10006;
+              </div> */}
+            </li>
+          ))}
         </ul>
 
         <div className={afterRow}>
           <div>Total: {filteredList.length}</div>
-          <div className={classNames(cleanUp, 'fa', 'fa-trash-o')} onClick={removeFinishedFromList} />
+          <div
+            className={classNames(cleanUp, 'fa', 'fa-trash-o')}
+            onClick={removeFinishedFromList}
+          />
         </div>
 
-        <ul className={classNames(filterClass, noPadding)} onClick={this.handleFiltering}>
-          {
-            ['All', 'Unfinished', 'Finished'].map((value, index) => (
-              <li
-                key={index}
-                style={value.toLowerCase() === filter ? { color: 'inherit' } : {}}
-              >
-                {value}
-              </li>
-            ))
-          }
+        <ul
+          className={classNames(filterClass, noPadding)}
+          onClick={this.handleFiltering}
+        >
+          {['All', 'Unfinished', 'Finished'].map((value, index) => (
+            <li
+              key={index}
+              style={value.toLowerCase() === filter ? { color: 'inherit' } : {}}
+            >
+              {value}
+            </li>
+          ))}
         </ul>
       </div>
     );
