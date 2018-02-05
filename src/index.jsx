@@ -16,13 +16,21 @@ const store = createStore(
 
 export const dispatch = store.dispatch;
 
-const render = Component => (
+setInterval(
+  () =>
+    dispatch({
+      type: 'CHANGE_VALUE',
+      payload: { index: 1, value: Math.random().toString() }
+    }),
+  12000
+);
+
+const render = Component =>
   ReactDOM.render(
     <Provider store={store}>
       <Component />
     </Provider>,
     document.getElementById('app')
-  )
-);
+  );
 
 render(App);
