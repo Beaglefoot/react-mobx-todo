@@ -3,8 +3,7 @@ import React from 'react';
 import TodoList from 'src/components/TodoList/TodoList';
 import { app } from './App.scss';
 
-console.log((new Date).toTimeString().split(' ')[0]);
-
+console.log(new Date().toTimeString().split(' ')[0]);
 
 // MST
 
@@ -17,20 +16,21 @@ console.log((new Date).toTimeString().split(' ')[0]);
 //   list: itemsMST
 // });
 
-
 // MobX
 import TodoStore from 'src/models/TodoStore';
 import TodoItem from 'src/models/TodoItem';
 
-const items = new Array(100).fill().map((_, i) => new TodoItem({ value: `no: ${i}` }));
+const items = new Array(1500)
+  .fill()
+  .map((_, i) => new TodoItem({ value: `no: ${i}` }));
 const store = new TodoStore(items);
 
 const App = () => (
   <div>
     <div className={app}>
       {/*<div>*/}
-        {/*<h1>MST Todo List</h1>*/}
-        {/*<TodoList store={storeMST} />*/}
+      {/*<h1>MST Todo List</h1>*/}
+      {/*<TodoList store={storeMST} />*/}
       {/*</div>*/}
       <div>
         <h1>MobX Todo List</h1>
