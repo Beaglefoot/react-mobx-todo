@@ -77,8 +77,8 @@ class TodoList extends Component {
         <ul className={noPadding}>
           {filteredList.map((item, index) => (
             <li key={item.id} className={todoItem}>
-              {item.value}
-              {/* <TodoText
+              {/* {item.value} */}
+              <TodoText
                 {...item}
                 toggleDone={toggleDone}
                 changeValue={changeValue}
@@ -86,7 +86,7 @@ class TodoList extends Component {
               />
               <div className={cross} onClick={() => removeFromList(index)}>
                 &#10006;
-              </div> */}
+              </div>
             </li>
           ))}
         </ul>
@@ -117,7 +117,7 @@ class TodoList extends Component {
   }
 }
 
-const mapStateToProps = state =>
+const mapStateToProps = state => 
   R.assoc('filteredList', getFilteredList(state), state);
 // const mapStateToProps = state => ({ ...state, filteredList: state.list });
 

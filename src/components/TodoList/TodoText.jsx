@@ -14,6 +14,10 @@ class TodoText extends React.Component {
     this.handleDoneToggling = this.handleDoneToggling.bind(this);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.done !== nextProps.done || this.props.value !== nextProps.value;
+  }
+
   handleEditClick() {
     this.setState(currentState => ({ isEditing: !currentState.isEditing }));
   }
